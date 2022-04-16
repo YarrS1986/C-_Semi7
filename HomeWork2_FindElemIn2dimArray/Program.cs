@@ -1,11 +1,9 @@
-﻿// Задайте двумерный массив. Введите элемент, и найдите первое его вхождение, 
-// выведите позиции по горизонтали и вертикали, или напишите, что такого элемента нет.
-// Например, такой массив:
+﻿// Напишите программу, которая на вход принимает позиции элемента в двумерном массиве, 
+// и возвращает значение этого элемента или же указание, что такого элемента нет.
 // 1 4 7 2
 // 5 9 2 3
 // 8 4 2 4
-
-// Введенный элемент 2, результат: [1, 4]                    элемент 6, результат: такого элемента нет.
+// 1 7 -> такого числа в массиве нет
 
 Console.Clear();
 
@@ -16,26 +14,26 @@ int[,] matrix = FillArray(m, n);
 PrintArray(matrix);
 Console.WriteLine();
 
-FindElement(matrix, Promt("Введи искомое число = "));
+FindElement(matrix, Promt("Введи номер строки = "), Promt("Введи номер столбца = "));
 
 
 //--------------------------------------------
-int[,] FindElement(int[,] arr, int element)
+int FindElement(int[,] arr, int elementM, int elementN)
 {
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
         for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            if (element == matrix[i, j])
+            if (elementM == i && elementN == j)
             {
-                Console.Write($"[{i}, {j}]");
+                Console.Write($"{matrix[i, j]}");
                 goto End;
             }
         }
     }
     Console.Write("Такого числа в массиве нет!");
 End:
-    return matrix;
+    return elementM;
 }
 
 int Promt(string message)
