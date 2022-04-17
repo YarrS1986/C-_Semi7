@@ -1,9 +1,11 @@
-﻿// Напишите программу, которая на вход принимает позиции элемента в двумерном массиве, 
-// и возвращает значение этого элемента или же указание, что такого элемента нет.
+﻿//  Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
+
+// Например, задан массив:
 // 1 4 7 2
 // 5 9 2 3
 // 8 4 2 4
-// 1 7 -> такого числа в массиве нет
+
+// Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
 
 Console.Clear();
 
@@ -12,30 +14,27 @@ int n = Promt("Введи количество столбцов(n) = ");
 
 int[,] matrix = FillArray(m, n);
 PrintArray(matrix);
+
 Console.WriteLine();
 
-FindElement(matrix, Promt("Введи номер строки = "), Promt("Введи номер столбца = "));
+double[] averageSum = new double[m];
+Console.WriteLine($"Сумма по каждой строке = ");
+for (int i = 0; i < matrix.GetLength(0); i++)
+{
+    for (int k = 0; k < 1; k++)
+    {
+        double Sum = 0;
+        for (int j = 0; j < matrix.GetLength(1); j++)
+        {
+            Sum = Sum + matrix[i, j];
+        }
+        averageSum[k] = Sum / averageSum.Length;
+        Console.Write($"{averageSum[k]:0.00}\t ");
+    }
+}
 
 
 //--------------------------------------------
-int FindElement(int[,] arr, int elementM, int elementN)
-{
-    for (int i = 0; i < matrix.GetLength(0); i++)
-    {
-        for (int j = 0; j < matrix.GetLength(1); j++)
-        {
-            if (elementM == i && elementN == j)
-            {
-                Console.Write($"Найденное число = {matrix[i, j]}");
-                goto End;
-            }
-        }
-    }
-    Console.Write("Такого числа в массиве нет!");
-End:
-    return elementM;
-}
-
 int Promt(string message)
 {
     Console.Write(message);
