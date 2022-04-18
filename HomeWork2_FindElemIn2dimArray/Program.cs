@@ -18,22 +18,13 @@ FindElement(matrix, Promt("Введи номер строки = "), Promt("Вв�
 
 
 //--------------------------------------------
-int FindElement(int[,] arr, int elementM, int elementN)
+void FindElement(int[,] arr, int elementM, int elementN)
 {
-    for (int i = 0; i < matrix.GetLength(0); i++)
+    if (elementM < 0 || elementM > matrix.GetLength(0) - 1 || elementN < 0 || elementN > matrix.GetLength(1) - 1)
     {
-        for (int j = 0; j < matrix.GetLength(1); j++)
-        {
-            if (elementM == i && elementN == j)
-            {
-                Console.Write($"Найденное число = {matrix[i, j]}");
-                goto End;
-            }
-        }
+        Console.Write("Такого числа в массиве нет!");
     }
-    Console.Write("Такого числа в массиве нет!");
-End:
-    return elementM;
+    Console.Write($"Найденное число = {matrix[elementM, elementN]}");
 }
 
 int Promt(string message)

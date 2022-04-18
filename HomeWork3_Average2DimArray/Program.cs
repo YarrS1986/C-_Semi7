@@ -17,6 +17,9 @@ PrintArray(matrix);
 
 Console.WriteLine();
 
+//мой вариант решения (Преподаватель: Первый цикл надо делать по второму индексу,
+//и непонятно, как вы вычисляете среднее по строкам, если делите на длину результирующего массива? 
+//Также непонял, зачем вам три вложенных цикла.)
 double[] averageSum = new double[m];
 Console.WriteLine($"Сумма по каждой строке = ");
 for (int i = 0; i < matrix.GetLength(0); i++)
@@ -33,8 +36,26 @@ for (int i = 0; i < matrix.GetLength(0); i++)
     }
 }
 
+//вариант решения преподавателя
+double[] averageSum = new double[matrix.GetLength(1)];
+Console.WriteLine($"Сумма по каждой колонке = ");
+for (int i = 0; i < matrix.GetLength(1); i++)
+{
+    double Sum = 0;
+    for (int j = 0; j < matrix.GetLength(0); j++)
+    {
+        Sum = Sum + matrix[j, i];
+    }
+    averageSum[i] = Sum / matrix.GetLength(0);
+    Console.Write($"{averageSum[i]:0.00}\t ");
+}
+
+
+
 
 //--------------------------------------------
+
+
 int Promt(string message)
 {
     Console.Write(message);
